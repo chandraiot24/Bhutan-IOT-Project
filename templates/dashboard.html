@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oxx Hacker Pi Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-black text-green-400 font-mono p-4">
+  <h1 class="text-3xl text-center mb-6">WORLD OF OXX IOT DASHBOARD</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="border border-green-500 p-4">
+      <h2 class="text-xl mb-2">System Info</h2>
+      <p><strong>Hostname:</strong> {{ data.hostname }}</p>
+      <p><strong>IP:</strong> {{ data.ip }}</p>
+      <p><strong>Time:</strong> {{ data.time }}</p>
+    </div>
+
+    <div class="border border-green-500 p-4">
+      <h2 class="text-xl mb-2">CPU Usage</h2>
+      <canvas id="cpuChart"></canvas>
+      <p class="mt-2"><strong>Temp:</strong> {{ data.temp }}</p>
+    </div>
+
+    <div class="border border-green-500 p-4">
+      <h2 class="text-xl mb-2">Memory Usage</h2>
+      <canvas id="memChart"></canvas>
+    </div>
+
+    <div class="border border-green-500 p-4">
+      <h2 class="text-xl mb-2">Network</h2>
+      <p><strong>Sent:</strong> {{ (data.net.bytes_sent / (1024**2)) | round(2) }} MB</p>
+      <p><strong>Received:</strong> {{ (data.net.bytes_recv / (1024**2)) | round(2) }} MB</p>
+    </div>
+
+    <div class="border border-green-500 p-4">
+      <h2 class="text-xl mb-2">Useful Links</h2>
+      <ul class="list-disc ml-5">
+        <li><a href="https://github.com/chandraiot24/Bhutan-IOT-Project" class="underline text-blue-300">My GitHub</a></li>
+        <li><a href="https://youtube.com" class="underline text-blue-300">YouTube</a></li>
+      </ul>
+    </div>
+
+    <div class="border border-green-500 p-4">
+      <h2 class="text-xl mb-2">Self-Hosted Services</h2>
+      <ul class="list-disc ml-5">
+        <li>Flask App: ✅ Running</li>
+        <li>Dashboard: ✅ Online</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
