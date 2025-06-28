@@ -1,11 +1,12 @@
-
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import psutil
 import socket
 import datetime
 import os
+import json
 
 app = Flask(__name__)
+
 
 def get_system_info():
     mem = psutil.virtual_memory()
@@ -24,13 +25,28 @@ def get_system_info():
         'time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
 
+
+def load_products():
+    with open('products.json', 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
 @app.route('/')
 def dashboard():
     data = get_system_info()
     return render_template('dashboard.html', data=data)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+
 @app.route('/api/data')
 def api_data():
-    return get_system_info()
+    return jsonify(get_system_info())
+
+
+@app.route('/store')
+def store():
+    products = load_products()
+    return render_template('store.html', products=products)
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80, debug=True)

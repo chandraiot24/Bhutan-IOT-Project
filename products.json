@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Traditional Bhutanese Dress (Gho)",
+    "price": 80.0,
+    "description": "Handmade gho from Bhutan for men.",
+    "image": "https://via.placeholder.com/200x200?text=Gho"
+  },
+  {
+    "id": 2,
+    "name": "Traditional Bhutanese Dress (Kira)",
+    "price": 95.0,
+    "description": "Beautiful kira for women, woven in Bhutan.",
+    "image": "https://via.placeholder.com/200x200?text=Kira"
+  },
+  {
+    "id": 3,
+    "name": "Handwoven Scarf",
+    "price": 25.0,
+    "description": "Colorful scarf crafted by local artisans.",
+    "image": "https://via.placeholder.com/200x200?text=Scarf"
+  }
+]
